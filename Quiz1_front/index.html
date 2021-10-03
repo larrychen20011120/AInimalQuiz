@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang= "zh-tw">
+    <head>
+        <meta charset= "utf-8">
+        <link rel=stylesheet type="text/css" href="main.css">
+        <title> Quiz1 </title>
+    </head>
+
+    <body>
+        <header>
+            <p>好友列表</p>
+        </header>
+
+        <div class= "container">
+
+        </div>
+
+        <footer>
+            <a class= "function"><img src= "https://cdn-icons-png.flaticon.com/512/2173/2173841.png" alt= "home"></a>
+            <a class= "function"><img src= "https://cdn-icons-png.flaticon.com/512/2950/2950711.png" alt= "chat"></a>
+            <a class= "function"><img src= "https://cdn-icons-png.flaticon.com/512/808/808439.png" alt= "game"></a>
+            <a class= "function"><img src= "https://cdn-icons-png.flaticon.com/512/668/668709.png" alt= "profile"></a>
+        </footer>
+
+
+        <script>
+
+            let xhreq = new XMLHttpRequest();
+            let url = "https://recruit.ainimal.io/friend_list";
+            xhreq.open("GET", url);
+            xhreq.send();
+
+
+            /*******************************************************
+             *  animal : 1 - 3 -> three kinds of aninals           *
+             *  type : 1 - 5 -> five kinds of characteristics      *
+             *******************************************************/
+
+             // penguin : https://cdn-icons-png.flaticon.com/512/1752/1752614.png
+             // panda : https://cdn-icons-png.flaticon.com/512/1752/1752610.png
+             // hippo : https://cdn-icons-png.flaticon.com/512/1752/1752598.png
+
+            xhreq.onload = function(){
+
+                let response = JSON.parse(this.response);
+                let container = document.getElementsByClassName("container");
+                
+                setHeight(container[0], response.length / 2);
+                
+                for (let i = 0; i < response.length; i++){
+
+                    let friend_box = document.createElement('div');
+
+                    friend_box.className = 'friend_box';
+                    container[0].appendChild(friend_box);
+
+                    friend_box.appendChild(createAnimal(response[i].animal));
+                    friend_box.appendChild(createDescription(response[i].nickname, response[i].sign));
+                    friend_box.appendChild(createGender(response[i].gender, response[i].last_message_timestamp));
+                }
+            }
+
+            // 動態設定container高度
+            function setHeight(container, box_num){
+                let height_unit = 18;
+                container.style.height = (height_unit * box_num + 5) + "vh";
+            }
+
+
+            function createAnimal(animal_num){
+
+                let animal_container = document.createElement('div');
+                let animal = document.createElement('img')
+
+                animal.className = 'animal';
+                animal_container.className = 'animal_container';
+
+                switch(animal_num){
+
+                    case 1:
+                        animal.src = 'https://cdn-icons-png.flaticon.com/512/1752/1752614.png';
+                        break;
+
+                    case 2:
+                        animal.src = 'https://cdn-icons-png.flaticon.com/512/1752/1752610.png'
+                        break;
+
+                    default:
+                        animal.src = 'https://cdn-icons-png.flaticon.com/512/1752/1752598.png'
+
+                }
+
+                animal_container.appendChild(animal);
+                return animal_container;
+            }
+
+            function createDescription(n, s){
+                let description_container = document.createElement('div');
+                let nickname = document.createElement('p');
+                let sign = document.createElement('p');
+
+                description_container.className = 'description_container';
+                nickname.className = 'nickname';
+                nickname.innerHTML = n;
+                sign.className = 'sign';
+                sign.innerHTML = s;
+
+                description_container.appendChild(nickname);
+                description_container.appendChild(sign);
+
+                return description_container;
+            }
+
+            function createGender(g, t){
+                let gender = document.createElement('img');
+                let detail_container = document.createElement('div');
+                let time = document.createElement('p');
+                let gender_container = document.createElement('div');
+
+                detail_container.className = 'detail_container';
+                gender_container.className = 'gender_container';
+                time.className = 'time';
+                gender.className = 'gender';
+
+                if (g === "male"){
+                    gender.src = 'https://cdn-icons-png.flaticon.com/512/2284/2284890.png';
+                }else{
+                    gender.src = 'https://cdn-icons-png.flaticon.com/512/2284/2284886.png';
+                }
+
+                time.innerHTML = t;
+
+                gender_container.appendChild(gender);
+                detail_container.appendChild(gender_container);
+                detail_container.appendChild(time);
+                return detail_container;
+            }
+            
+        </script>
+    </body>
+
+</html>
