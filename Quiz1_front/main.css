@@ -23,21 +23,51 @@ header > p{
     margin: 15vh 0;
 }
 
-.friend_box{
+.friend_container{
     width: 40%;
     height: 12vh;
     float: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh 5%;
+}
+
+.friend_box{
+    width: 90%;
+    height: 10vh;
     background-color: #a8dba8;
     border-radius: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3vh 5%;
 }
 
 .friend_box:hover{
     background-color: #79bd9a;
     cursor: pointer;
+}
+
+.profile{
+    margin-top: 1%;
+    width: 80%;
+    height: 16vh;
+    display: none;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.profile > p{
+    background-color: #a8dba8;
+    border-radius: 10px;
+    width: 55%;
+    height: 30%;
+    float: right;
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .animal_container{
@@ -49,7 +79,6 @@ header > p{
     align-items: center;
 }
 .animal{
-    
     width: auto;
     height: 70%;
 }
@@ -69,7 +98,7 @@ header > p{
 .sign{
     font-size: smaller;
     font-weight: bolder;
-    color: grey;
+    color: #4695d6;
     margin-left: 10px;
 }
 
@@ -94,10 +123,12 @@ header > p{
     height: 100%;
 }
 .time{
-    color: grey;
+    color: gray;
     font-weight: bolder;
     font-size: smaller;
     margin-top: 10%;
+    margin-right: 10%;
+    text-align: right;
 }
 
 footer{
@@ -122,3 +153,22 @@ footer{
     width: auto;
     height: 60%;
 }
+
+@media (max-width: 900px){
+    .friend_container{
+        width: 70%;
+        margin: 3vh 15%;
+    }
+    .profile > p{
+        width: 70%;
+    }
+} 
+@media (max-width: 600px){
+    .friend_container{
+        width: 96%;
+        margin: 3vh 4%;
+    }
+    .profile > p{
+        width: 80%;
+    }
+} 
