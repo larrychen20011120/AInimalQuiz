@@ -2,7 +2,7 @@
 Quiz for entering Ainimal 
 
 # Snapshot (Frontend Q1)
-![](/Quiz1_front/Image/photo1.jpg)
-![](/Quiz1_front/Image/photo2.jpg)
-![](/Quiz1_front/Image/photo3.jpg)
-![](/Quiz1_front/Image/photo4.jpg)
+![](https://github.com/larrychen20011120/AInimalQuiz/blob/main/Quiz1_front/Image/photo1.JPG)
+![](https://github.com/larrychen20011120/AInimalQuiz/blob/main/Quiz1_front/Image/photo2.JPG)
+![](https://github.com/larrychen20011120/AInimalQuiz/blob/main/Quiz1_front/Image/photo3.JPG)
+![](https://github.com/larrychen20011120/AInimalQuiz/blob/main/Quiz1_front/Image/photo4.JPG)
